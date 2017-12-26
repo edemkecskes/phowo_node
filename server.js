@@ -1,3 +1,4 @@
+var http = require('http');
 var express    = require('express');
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -7,6 +8,10 @@ var connection = mysql.createConnection({
   database : 'phowo'
 });
 var app = express();
+
+var port = process.env.PORT || 8080;
+
+console.log("Server running on port " + port);
 
 connection.connect(function(err){
 if(!err) {
@@ -28,4 +33,4 @@ connection.end();
   res.send('Hello World!');
 });
 
-app.listen(8080);
+app.listen(port);

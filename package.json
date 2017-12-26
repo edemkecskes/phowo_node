@@ -1,0 +1,9 @@
+{
+  "name": "phowo",
+  "version": "0.1.0",
+  "description": "PhoWo in NodeJS for OpenShift",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
