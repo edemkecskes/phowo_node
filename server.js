@@ -1,36 +1,10 @@
 var http = require('http');
-var express    = require('express');
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'mysql://mysql:3306/',
-  user     : 'adam',
-  password : 'mThPxH6UJ',
-  database : 'phowo'
-});
-var app = express();
 
 var port = process.env.PORT || 8080;
 
+http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.end("Hello from OpenShift\n");
+}).listen(port);
+
 console.log("Server running on port " + port);
-
-connection.connect(function(err){
-if(!err) {
-    console.log("Database is connected ...");
-} else {
-    console.log("Error connecting database ...");
-}
-});
-
-app.get("/",function(req,res){
-/*connection.query('SELECT * from user LIMIT 2', function(err, rows, fields) {
-connection.end();
-  if (!err)
-    console.log('The solution is: ', rows);
-  else
-    console.log('Error while performing Query.');
-  });*/
-  console.log("success!");
-  res.send('Hello World!');
-});
-
-app.listen(port);
